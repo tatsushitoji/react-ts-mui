@@ -1,2 +1,2 @@
-export { counter, CounterActions, CounterState } from './module';
+export { counter } from './module';
 export { CounterContainer } from './Container';

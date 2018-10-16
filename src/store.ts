@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from 'redux';
-import { counter, CounterActions, CounterState } from './counter';
+import { counter } from './counter';
+import { CounterActions, CounterState } from './counter/module';
 import { nodeEnv } from './env';
 
 export default createStore(
