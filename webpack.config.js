@@ -7,13 +7,13 @@ const {
 
 const base = {
   mode: NODE_ENV || "development",
-  entry: "./src/index.tsx",
-  output: {
-      filename: "bundle.js",
-      path: __dirname + "/dist"
-  },
 
-  devtool: "source-map",
+  entry: "./src/index.tsx",
+
+  output: {
+    filename: "bundle.js",
+    path: __dirname + "/dist"
+  },
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
@@ -22,32 +22,48 @@ const base = {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: "babel-loader" },
-
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]
   },
+
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: 'src/index.html'
+    }),
   ],
+
   optimization: {
     splitChunks: {
-      name: 'vendor',
-      chunks: 'initial',
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
     }
   },
+
   node: {
     fs: 'empty',
   },
-  devtool: 'eval',
+};
+
+const development = {
+  devtool: "cheap-module-eval-source-map",
   devServer: {
     stats: { colors: true },
     port: 3000,
-    open: true,
     // historyApiFallback: true,
   },
 };
 
+const production = {
+
+};
+
+
 module.exports = {
   ...base,
+  ...(NODE_ENV === 'development' && development),
 };

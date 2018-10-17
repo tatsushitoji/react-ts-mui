@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "start": "NODE_ENV=development webpack-dev-server",
     "lint": "tslint 'src/**/*.ts{,x}' -p tsconfig.json",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
