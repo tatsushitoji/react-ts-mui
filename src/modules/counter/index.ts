@@ -1,7 +1,1 @@
-export {
-  reducer,
-  State,
-  Actions,
-  incrementAmount,
-  decrementAmount,
-} from './module';
+export { reducer, incrementAmount, decrementAmount } from './module';

@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import { rootReducer } from './reducers';
 import { nodeEnv } from './env';
-import { State as CounterState } from './modules/counter';
+import { State as CounterState } from './modules/counter/module'; // TODO: export interface/type
 
 export default createStore(
   rootReducer,
