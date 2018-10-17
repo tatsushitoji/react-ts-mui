@@ -1,19 +1,15 @@
-import { createStore, combineReducers } from 'redux';
-import { counter } from './counter';
-import { CounterActions, CounterState } from './counter/module';
+import { createStore } from 'redux';
+import { rootReducer } from './reducers';
 import { nodeEnv } from './env';
+import { State as CounterState } from './modules/counter';
 
 export default createStore(
-  combineReducers({
-    counter,
-  }),
+  rootReducer,
   nodeEnv === 'development' &&
     (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
     (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-export type State = {
+export interface State {
   counter: CounterState;
-};
-
-export type Action = CounterActions;
+}

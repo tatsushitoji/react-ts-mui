@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { CounterContainer } from './counter';
+import { CounterContainer } from './containers/Counter';
 import store from './store';
 
 const renderApp = () =>

@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { IMapStateToProps, IMapDispatchToProps } from './Container';
 
-type Props = IMapStateToProps & IMapDispatchToProps;
+type Props = {
+  count: number;
+  increment: React.MouseEventHandler<HTMLButtonElement>;
+  decrement: React.MouseEventHandler<HTMLButtonElement>;
+};
 
 export const Counter: React.SFC<Props> = ({ count, increment, decrement }) => (
   <div>
