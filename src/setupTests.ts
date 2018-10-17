@@ -1,5 +1,7 @@
-import { configure } from 'enzyme';
-import * as EnzymeAdapter from 'enzyme-adapter-react-16/';
+import * as Enzyme from 'enzyme';
+import enzymeAdapterReact16 from 'enzyme-adapter-react-16';
 
-const anyEnzymeAdapter: any = EnzymeAdapter;
-configure({ adapter: new anyEnzymeAdapter() });
+Enzyme.configure({ adapter: new enzymeAdapterReact16() });
+
+window.alert = () => {};
+process.env.NODE_ENV = 'test';
