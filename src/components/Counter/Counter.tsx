@@ -1,4 +1,8 @@
 import * as React from 'react';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+// tslint:disable-next-line
+import styled from '../../theme';
 
 type Props = {
   count: number;
@@ -6,10 +10,18 @@ type Props = {
   decrement: React.MouseEventHandler<HTMLButtonElement>;
 };
 
+const CounterPaper = styled(Paper)`
+  padding: 20px;
+`;
+
 export const Counter: React.SFC<Props> = ({ count, increment, decrement }) => (
   <div>
-    <p>count: {count}</p>
-    <button onClick={increment}>Increment 3</button>
-    <button onClick={decrement}>Decrement 2</button>
+    <CounterPaper>count: {count}</CounterPaper>
+    <Button variant="contained" color="primary" onClick={increment}>
+      Increment 3
+    </Button>
+    <Button variant="contained" color="secondary" onClick={decrement}>
+      Decrement 2
+    </Button>
   </div>
 );
