@@ -3,10 +3,7 @@ import { Action } from 'redux';
 const INCREMENT = 'counter/increment';
 const DECREMENT = 'counter/decrement';
 
-export type Actions = UpdateAmount;
-
-export interface UpdateAmount extends Action {
-  type: typeof INCREMENT | typeof DECREMENT;
+export interface Actions extends Action<typeof INCREMENT | typeof DECREMENT> {
   payload: {
     amount: number;
   };
@@ -16,14 +13,14 @@ export interface State {
   count: number;
 }
 
-export const incrementAmount = (amount: number): UpdateAmount => ({
+export const incrementAmount = (amount: number): Actions => ({
   type: INCREMENT,
   payload: {
     amount,
   },
 });
 
-export const decrementAmount = (amount: number): UpdateAmount => ({
+export const decrementAmount = (amount: number): Actions => ({
   type: DECREMENT,
   payload: {
     amount,
@@ -36,7 +33,7 @@ const initialState: State = {
 
 export const reducer = (
   state: State = initialState,
-  action: UpdateAmount,
+  action: Actions,
 ): State => {
   switch (action.type) {
     case INCREMENT:
