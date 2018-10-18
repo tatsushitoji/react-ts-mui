@@ -6498,6 +6498,11 @@ react-redux@^5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
+react-styled-reboot@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-styled-reboot/-/react-styled-reboot-1.0.0.tgz#b4afc6959efa41076c20675e4ca3b927c019aa52"
+  integrity sha512-7ET8PeIj6uR+dFDMAN6KSWntC6/iNvkc0SeXbQz2opm3sLDTOmXGR2953gszZnIKFbhXpgvqy/g3qt46xiBIFA==
+
 react-test-renderer@^16.0.0-0:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.4.2.tgz#4e03eca9359bb3210d4373f7547d1364218ef74e"
