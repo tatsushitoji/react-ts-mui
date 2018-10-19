@@ -1,0 +1,89 @@
+version: 2
+
+references:
+
+  - &docker_container_of_nodejs
+    docker:
+      - image: circleci/node:8.12.0
+        environment:
+          NPM_CONFIG_LOGLEVEL: warn
+          TERM: xterm-color
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
+    working_directory: ~/react-ts-starter
+    parallelism: 1
+
+  - &attach_workspace
+    attach_workspace:
+      name: Attach workspace
+      at: /home/circleci/react-ts-starter
+
+  - &restore_yarn_cache
+    restore_cache:
+      name: Restore yarn cache
+      keys:
+        - yarn-v1-{{ checksum "yarn.lock" }}
+        - yarn-v1-
+
+  - &install_node_modules
+    run:
+      name: Install node modules
+      command: |
+        yarn install --prefer-offline
+
+  - &save_yarn_cache
+    save_cache:
+      name: Save yarn cache
+      key: yarn-v1-{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.yarn
+        - ~/.cache/yarn
+
+  - &persist_to_workspace
+    persist_to_workspace:
+      name: Persist to workspace
+      root: /home/circleci/react-ts-starter
+      paths:
+        - node_modules
+
+jobs:
+
+  install_node_modules:
+    <<: *docker_container_of_nodejs
+    steps:
+      - checkout
+      - *restore_yarn_cache
+      - *install_node_modules
+      - *save_yarn_cache
+      - *persist_to_workspace
+
+  test_unit:
+    <<: *docker_container_of_nodejs
+    steps:
+      - checkout
+      - *attach_workspace
+      - run:
+          name: Run tslint
+          when: always
+          command: |
+            yarn lint
+      - run:
+          name: Run type check
+          when: always
+          command: |
+            yarn type
+      - run:
+          name: Run unit test
+          when: always
+          command: |
+            yarn test
+
+
+workflows:
+  version: 2
+
+  commit:
+    jobs:
+      - install_node_modules
+      - test_unit:
+          requires:
+            - install_node_modules
