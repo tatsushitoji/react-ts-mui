@@ -1,1 +1,2 @@
-export { reducer, incrementAmount, decrementAmount } from './module';
+export { incrementAmount, decrementAmount } from './actions';
+export { reducer } from './reducers';
