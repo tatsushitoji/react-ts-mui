@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { State } from '../../store';
+import { State } from '../../stores/store';
 import { incrementAmount, decrementAmount } from '../../modules/counter';
 import { Counter } from '../../components/Counter';
 

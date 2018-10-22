@@ -1,15 +1,15 @@
-import { reducer } from './module';
+import { reducer as couterReducer } from './reducers';
 
 // reducer
 test('should return the initial state', () => {
   let state;
-  state = reducer(undefined, {} as any);
+  state = couterReducer(undefined, {} as any);
   expect(state).toMatchObject({ count: 0 });
 });
 
 test('should handle INCREMENT', () => {
   let state;
-  state = reducer(
+  state = couterReducer(
     { count: 0 },
     { type: 'counter/increment', payload: { amount: 3 } },
   );
@@ -18,7 +18,7 @@ test('should handle INCREMENT', () => {
 
 test('should handle DECREMENT', () => {
   let state;
-  state = reducer(
+  state = couterReducer(
     { count: 5 },
     { type: 'counter/decrement', payload: { amount: 3 } },
   );
