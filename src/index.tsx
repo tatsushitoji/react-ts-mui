@@ -10,10 +10,12 @@ const GlobalStyle = createGlobalStyle`
   ${reactStyledReboot()}
 `;
 
+const store = configureStore({});
+
 const App = () => (
   <React.Fragment>
     <GlobalStyle />
-    <Provider store={configureStore()}>
+    <Provider store={store}>
       <CounterContainer />
     </Provider>
   </React.Fragment>
