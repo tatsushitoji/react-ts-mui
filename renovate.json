@@ -7,5 +7,15 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "packageRules": [
+    {
+      "updateTypes": [
+        "major"
+      ],
+      "labels": [
+        "UPDATE-MAJOR"
+      ]
+    }
+  ]
 }
