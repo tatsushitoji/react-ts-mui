@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { CounterContainer } from './containers/Counter';
-import store from './stores/store';
+import { configureStore } from './stores/store';
 import { createGlobalStyle } from './theme';
 
 const reactStyledReboot = require('react-styled-reboot'); // TODO: use @types/react-styled-reboot
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 const App = () => (
   <React.Fragment>
     <GlobalStyle />
-    <Provider store={store}>
+    <Provider store={configureStore()}>
       <CounterContainer />
     </Provider>
   </React.Fragment>
