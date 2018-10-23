@@ -6,7 +6,7 @@ import {
   decrementAmount,
   asyncIncrementAmount,
 } from '../../modules/counter';
-import { Counter } from '../../components/Counter';
+import { Counter as CounterComponent, Props } from '../../components/Counter';
 
 const mapStateToProps = (state: State) => ({
   count: state.counter.count,
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   asyncIncrement: (_: React.MouseEvent) => dispatch(asyncIncrementAmount(5)),
 });
 
-export const CounterContainer = connect(
+export const Counter = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Counter);
+)<Props & { store?: unknown }>(CounterComponent);

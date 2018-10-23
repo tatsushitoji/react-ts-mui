@@ -1,1 +1,1 @@
-export { Counter } from './Counter';
+export { Counter, Props } from './Counter';

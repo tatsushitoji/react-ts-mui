@@ -1,1 +1,1 @@
-export { CounterContainer } from './Counter';
+export { Counter } from './Counter';

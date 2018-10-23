@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 // tslint:disable-next-line
 import styled from '../../theme';
 
-type Props = {
+export type Props = {
   count: number;
   increment: React.MouseEventHandler<HTMLButtonElement>;
   decrement: React.MouseEventHandler<HTMLButtonElement>;
