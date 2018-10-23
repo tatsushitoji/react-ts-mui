@@ -1,6 +1,5 @@
 import { reducer as couterReducer } from './reducers';
 
-// reducer
 test('should return the initial state', () => {
   let state;
   state = couterReducer(undefined, {} as any);
