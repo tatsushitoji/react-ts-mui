@@ -4,12 +4,12 @@ import Button from '@material-ui/core/Button';
 // tslint:disable-next-line
 import styled from '../../theme';
 
-export type Props = {
+export interface Props {
   count: number;
   increment: React.MouseEventHandler<HTMLButtonElement>;
   decrement: React.MouseEventHandler<HTMLButtonElement>;
   asyncIncrement: React.MouseEventHandler<HTMLButtonElement>;
-};
+}
 
 const CounterPaper = styled(Paper)`
   padding: 20px;
@@ -22,14 +22,29 @@ export const Counter: React.SFC<Props> = ({
   asyncIncrement,
 }) => (
   <div>
-    <CounterPaper>count: {count}</CounterPaper>
-    <Button variant="contained" color="primary" onClick={increment}>
+    <CounterPaper data-test="counter">count: {count}</CounterPaper>
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={increment}
+      data-test="increment-button"
+    >
       Increment 3
     </Button>
-    <Button variant="contained" color="secondary" onClick={decrement}>
+    <Button
+      variant="contained"
+      color="secondary"
+      onClick={decrement}
+      data-test="decrement-button"
+    >
       Decrement 2
     </Button>
-    <Button variant="contained" color="default" onClick={asyncIncrement}>
+    <Button
+      variant="contained"
+      color="default"
+      onClick={asyncIncrement}
+      data-test="async-increment-button"
+    >
       Async Increment 5
     </Button>
   </div>
