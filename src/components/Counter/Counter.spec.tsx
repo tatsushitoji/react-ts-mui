@@ -28,7 +28,7 @@ test('should render self with initial state', () => {
   expect(wrapper.find(sel('counter')).text()).toContain('0');
 });
 
-test.only('should call increment button click', () => {
+test('should call increment button click', () => {
   const wrapper = shallow(
     <Counter
       count={0}
