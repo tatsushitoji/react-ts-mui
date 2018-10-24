@@ -1,7 +1,7 @@
 import * as React from 'react';
 import reduxMockStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
-import { Counter } from './Counter';
+import { Counter } from '.';
 
 const mockStore = reduxMockStore();
 let store: any;

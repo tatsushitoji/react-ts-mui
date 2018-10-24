@@ -1,4 +1,4 @@
-import { reducer as couterReducer } from './reducers';
+import { reducer as couterReducer } from '.';
 
 test('should return the initial state', () => {
   let state;

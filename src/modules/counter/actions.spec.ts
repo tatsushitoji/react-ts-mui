@@ -1,4 +1,4 @@
-import * as actions from './actions';
+import * as actions from '.';
 
 test('should create an action to increment counter', () => {
   const expectedAction = {

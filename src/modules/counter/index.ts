@@ -1,7 +1,3 @@
-export {
-  incrementAmount,
-  decrementAmount,
-  asyncIncrementAmount,
-} from './actions';
-export { asyncIncrementEpic } from './epics';
-export { reducer } from './reducers';
+export * from './actions';
+export * from './epics';
+export * from './reducers';
