@@ -1,2 +1,3 @@
 import { Actions as CounterActions } from '../modules/counter/actions';
-export type Actions = CounterActions;
+import { Actions as TodoActions } from '../modules/todo/actions';
+export type Actions = CounterActions | TodoActions;

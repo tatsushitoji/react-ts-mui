@@ -3,10 +3,12 @@ import { createEpicMiddleware } from 'redux-observable';
 import { rootReducer } from './reducers';
 import { nodeEnv } from '../env';
 import { State as CounterState } from '../modules/counter/reducers';
+import { State as todoState } from '../modules/todo/reducers';
 import { rootEpic } from './epics';
 
 export interface State {
   counter: CounterState;
+  todo: todoState;
 }
 
 const epicMiddleware = createEpicMiddleware();
