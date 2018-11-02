@@ -1,6 +1,6 @@
 import { ADD_TODO, TOGGLE_TODO, Actions } from './actions';
 
-interface Todo {
+export interface Todo {
   id: number;
   text: string;
   completed: boolean;

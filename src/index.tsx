@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Counter } from './containers/Counter';
+import { Todo } from './containers/Todo';
 import { configureStore } from './stores/store';
 import { createGlobalStyle } from './theme';
 
@@ -16,7 +17,10 @@ const App = () => (
   <React.Fragment>
     <GlobalStyle />
     <Provider store={store}>
-      <Counter />
+      <React.Fragment>
+        <Counter />
+        <Todo />
+      </React.Fragment>
     </Provider>
   </React.Fragment>
 );
