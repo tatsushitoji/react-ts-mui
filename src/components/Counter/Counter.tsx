@@ -13,6 +13,7 @@ export interface Props {
 
 const CounterPaper = styled(Paper)`
   padding: 20px;
+  margin: 20px;
 `;
 
 export const Counter: React.SFC<Props> = ({
@@ -21,8 +22,8 @@ export const Counter: React.SFC<Props> = ({
   decrement,
   asyncIncrement,
 }) => (
-  <div>
-    <CounterPaper data-test="counter">count: {count}</CounterPaper>
+  <CounterPaper data-test="counter">
+    <div>count: {count}</div>
     <Button
       variant="contained"
       color="primary"
@@ -47,5 +48,5 @@ export const Counter: React.SFC<Props> = ({
     >
       Async Increment 5
     </Button>
-  </div>
+  </CounterPaper>
 );
