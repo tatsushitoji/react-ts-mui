@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { pure } from 'recompose';
 import { withFormik, InjectedFormikProps } from 'formik';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
@@ -12,7 +13,7 @@ import { Todo } from '../../modules/todo';
 export interface Props {
   todos: Todo[];
   add: (id: Todo['text']) => void;
-  toggle: (id: Todo['id']) => (event: React.ChangeEvent) => void;
+  toggle: (event: React.ChangeEvent) => void;
 }
 
 interface FormProps {
@@ -29,7 +30,7 @@ const TodoPaper = styled(Paper)`
   margin: 20px;
 `;
 
-const TodoForm: React.SFC<
+const InnerForm: React.SFC<
   InjectedFormikProps<FormProps, FormValues>
 > = props => {
   const submitOnClick = (_: React.MouseEvent) => props.submitForm();
@@ -61,7 +62,7 @@ const TodoForm: React.SFC<
   );
 };
 
-export const EnhancedForm = withFormik<FormProps, FormValues>({
+const EnhancedForm = withFormik<FormProps, FormValues>({
   mapPropsToValues: () => ({ text: '' }),
   handleSubmit: (values, { setSubmitting, resetForm, props }) => {
     if (values.text.trim().length <= 0) return;
@@ -69,11 +70,13 @@ export const EnhancedForm = withFormik<FormProps, FormValues>({
     resetForm();
     setSubmitting(false);
   },
-})(TodoForm);
+})(InnerForm);
+
+const TodoForm = pure(EnhancedForm);
 
 export const TodoComponent: React.SFC<Props> = ({ todos, add, toggle }) => (
   <TodoPaper>
     {todos.length > 0 && <TodoList todos={todos} toggle={toggle} />}
-    <EnhancedForm add={add} />
+    <TodoForm add={add} />
   </TodoPaper>
 );

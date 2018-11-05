@@ -20,10 +20,11 @@ export const TodoList: React.SFC<ListProps> = ({ todos, toggle }) => (
   <StyledList>
     {todos.map((item: Todo) => (
       <TodoListItem
+        id={item.id}
         key={item.id}
         text={item.text}
-        compleated={item.completed}
-        toggle={toggle(item.id)}
+        completed={item.completed}
+        toggle={toggle}
       />
     ))}
   </StyledList>
