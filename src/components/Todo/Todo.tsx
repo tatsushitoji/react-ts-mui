@@ -29,7 +29,7 @@ const TodoPaper = styled(Paper)`
   margin: 20px;
 `;
 
-const InnerForm: React.SFC<
+const TodoForm: React.SFC<
   InjectedFormikProps<FormProps, FormValues>
 > = props => {
   const submitOnClick = (_: React.MouseEvent) => props.submitForm();
@@ -61,20 +61,19 @@ const InnerForm: React.SFC<
   );
 };
 
-export const TodoForm = withFormik<FormProps, FormValues>({
+export const EnhancedForm = withFormik<FormProps, FormValues>({
   mapPropsToValues: () => ({ text: '' }),
   handleSubmit: (values, { setSubmitting, resetForm, props }) => {
-    console.log('handle');
     if (values.text.trim().length <= 0) return;
     props.add(values.text);
     resetForm();
     setSubmitting(false);
   },
-})(InnerForm);
+})(TodoForm);
 
 export const TodoComponent: React.SFC<Props> = ({ todos, add, toggle }) => (
   <TodoPaper>
     {todos.length > 0 && <TodoList todos={todos} toggle={toggle} />}
-    <TodoForm add={add} />
+    <EnhancedForm add={add} />
   </TodoPaper>
 );
