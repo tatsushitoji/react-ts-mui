@@ -14,8 +14,8 @@ test('should create an action to toggle counter', () => {
   const expectedAction = {
     type: actions.TOGGLE_TODO,
     payload: {
-      id: 123,
+      id: '123',
     },
   };
-  expect(actions.toggleTodo(123)).toEqual(expectedAction);
+  expect(actions.toggleTodo('123')).toEqual(expectedAction);
 });

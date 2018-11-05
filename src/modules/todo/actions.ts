@@ -8,7 +8,7 @@ export const addTodo = (text: string) => ({
   },
 });
 
-export const toggleTodo = (id: number) => ({
+export const toggleTodo = (id: string) => ({
   type: TOGGLE_TODO as typeof TOGGLE_TODO,
   payload: {
     id,

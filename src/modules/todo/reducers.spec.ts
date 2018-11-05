@@ -13,7 +13,6 @@ test('should handle ADD_TODO', () => {
     { type: 'todo/add_todo', payload: { text: 'todo item 1' } },
   );
   expect(state.todos[0]).toMatchObject({
-    id: 0,
     text: 'todo item 1',
     completed: false,
   });

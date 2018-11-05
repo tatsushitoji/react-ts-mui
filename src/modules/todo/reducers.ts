@@ -1,7 +1,8 @@
+import cuid from 'cuid';
 import { ADD_TODO, TOGGLE_TODO, Actions } from '.';
 
 export interface Todo {
-  id: number;
+  id: string;
   text: string;
   completed: boolean;
 }
@@ -25,7 +26,7 @@ export const reducer = (
         todos: [
           ...state.todos,
           {
-            id: state.todos.length,
+            id: cuid(),
             text: action.payload.text,
             completed: false,
           },
