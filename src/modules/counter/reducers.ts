@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, Actions } from './actions';
+import { INCREMENT, DECREMENT, Actions } from '.';
 
 export interface State {
   count: number;

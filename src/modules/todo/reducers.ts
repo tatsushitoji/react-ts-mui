@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, Actions } from './actions';
+import { ADD_TODO, TOGGLE_TODO, Actions } from '.';
 
 export interface Todo {
   id: number;
