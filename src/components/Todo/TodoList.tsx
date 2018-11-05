@@ -5,6 +5,8 @@ import { TodoListItem } from './TodoListItem';
 // tslint:disable-next-line
 import styled from '../../theme';
 
+import { Todo } from '../../modules/todo';
+
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type ListProps = Omit<Props, 'add'>;
 
@@ -16,12 +18,11 @@ const StyledList = styled(List)`
 
 export const TodoList: React.SFC<ListProps> = ({ todos, toggle }) => (
   <StyledList>
-    {todos.map((item: any) => (
+    {todos.map((item: Todo) => (
       <TodoListItem
         key={item.id}
-        id={item.id}
         text={item.text}
-        completed={item.completed}
+        compleated={item.completed}
         toggle={toggle(item.id)}
       />
     ))}

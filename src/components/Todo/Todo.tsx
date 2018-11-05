@@ -12,7 +12,7 @@ import { Todo } from '../../modules/todo';
 export interface Props {
   todos: Todo[];
   add: (id: Todo['text']) => void;
-  toggle: (id: Todo['id']) => (event: React.MouseEvent) => void;
+  toggle: (id: Todo['id']) => (event: React.ChangeEvent) => void;
 }
 
 interface FormProps {

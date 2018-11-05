@@ -10,7 +10,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   add: (text: string) => dispatch(addTodo(text)),
-  toggle: (id: number) => (_: React.MouseEvent) => dispatch(toggleTodo(id)),
+  toggle: (id: number) => (_: React.ChangeEvent) => dispatch(toggleTodo(id)),
 });
 
 export const Todo = connect(

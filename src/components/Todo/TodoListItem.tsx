@@ -4,7 +4,11 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
-type Props = any;
+type Props = {
+  text: string;
+  compleated: boolean;
+  toggle: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 export const TodoListItem: React.SFC<Props> = ({
   text,
