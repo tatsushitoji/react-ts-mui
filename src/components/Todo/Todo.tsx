@@ -13,11 +13,13 @@ import { Todo } from '../../modules/todo';
 export interface Props {
   todos: Todo[];
   add: (id: Todo['text']) => void;
+  asyncAdd: (id: Todo['text']) => void;
   toggle: (event: React.ChangeEvent) => void;
 }
 
 interface FormProps {
   add: Props['add'];
+  asyncAdd: Props['asyncAdd'];
 }
 
 interface FormValues {
@@ -25,7 +27,6 @@ interface FormValues {
 }
 
 const TodoPaper = styled(Paper)`
-  max-width: 25rem;
   padding: 20px;
   margin: 20px;
 `;
@@ -33,7 +34,14 @@ const TodoPaper = styled(Paper)`
 const InnerForm: React.SFC<
   InjectedFormikProps<FormProps, FormValues>
 > = props => {
-  const submitOnClick = (_: React.MouseEvent) => props.submitForm();
+  const clickAdd = (_: React.MouseEvent) => {
+    props.add(props.values.text);
+    props.submitForm();
+  };
+  const clickAsyncAdd = (_: React.MouseEvent) => {
+    props.asyncAdd(props.values.text);
+    props.submitForm();
+  };
   return (
     <form>
       <TextField
@@ -50,10 +58,19 @@ const InnerForm: React.SFC<
         variant="contained"
         color="primary"
         type="submit"
-        onClick={submitOnClick}
+        onClick={clickAdd}
         disabled={props.values.text.length <= 0 || props.isSubmitting}
       >
         add
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        onClick={clickAsyncAdd}
+        disabled={props.values.text.length <= 0 || props.isSubmitting}
+      >
+        async add
       </Button>
       <Button variant="contained" color="secondary" onClick={props.handleReset}>
         reset
@@ -64,9 +81,8 @@ const InnerForm: React.SFC<
 
 const EnhancedForm = withFormik<FormProps, FormValues>({
   mapPropsToValues: () => ({ text: '' }),
-  handleSubmit: (values, { setSubmitting, resetForm, props }) => {
+  handleSubmit: (values, { setSubmitting, resetForm }) => {
     if (values.text.trim().length <= 0) return;
-    props.add(values.text);
     resetForm();
     setSubmitting(false);
   },
@@ -74,9 +90,14 @@ const EnhancedForm = withFormik<FormProps, FormValues>({
 
 const TodoForm = pure(EnhancedForm);
 
-export const TodoComponent: React.SFC<Props> = ({ todos, add, toggle }) => (
+export const TodoComponent: React.SFC<Props> = ({
+  todos,
+  add,
+  asyncAdd,
+  toggle,
+}) => (
   <TodoPaper>
     {todos.length > 0 && <TodoList todos={todos} toggle={toggle} />}
-    <TodoForm add={add} />
+    <TodoForm add={add} asyncAdd={asyncAdd} />
   </TodoPaper>
 );
