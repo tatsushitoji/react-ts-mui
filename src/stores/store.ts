@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, compose, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+import reduxThunk, { ThunkMiddleware } from 'redux-thunk';
 import { rootReducer } from './reducers';
 import { nodeEnv } from '../env';
 import { State as CounterState } from '../modules/counter/reducers';
 import { State as todoState } from '../modules/todo/reducers';
 import { rootEpic } from './epics';
+import { Actions } from './actions';
 
 export interface State {
   counter: CounterState;
@@ -19,7 +21,12 @@ const createEnhancer = () => {
     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
       : compose;
-  return composeEnhancers(applyMiddleware(epicMiddleware));
+  return composeEnhancers(
+    applyMiddleware(epicMiddleware, reduxThunk as ThunkMiddleware<
+      State,
+      Actions
+    >),
+  );
 };
 
 export const configureStore = (preloadedState: Object = {}) => {
