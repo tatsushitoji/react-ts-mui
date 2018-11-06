@@ -1,9 +1,5 @@
 import { ActionCreator } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../../stores/store';
-import { RootActions } from '../../stores/actions';
-
-type ThunkResult<R> = ThunkAction<R, RootState, undefined, RootActions>;
+import { TAction } from '../../types';
 
 export const ADD_TODO = 'todo/add_todo';
 export const TOGGLE_TODO = 'todo/toggle_todo';
@@ -22,9 +18,7 @@ export const toggleTodo = (id: string) => ({
   },
 });
 
-export const asyncAddTodo: ActionCreator<
-  ThunkResult<void>
-> = text => dispatch => {
+export const asyncAddTodo: ActionCreator<TAction<void>> = text => dispatch => {
   setTimeout(() => {
     dispatch(addTodo(text));
   }, 1000);

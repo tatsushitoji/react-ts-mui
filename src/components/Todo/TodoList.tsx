@@ -1,13 +1,12 @@
 import * as React from 'react';
 import List from '@material-ui/core/List';
 import { Props } from '.';
+import { Todo } from '../../modules/todo';
 import { TodoListItem } from './TodoListItem';
+import { Omit } from '../../types';
 // tslint:disable-next-line
 import styled from '../../theme';
 
-import { Todo } from '../../modules/todo';
-
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type ListProps = Omit<Props, 'add' | 'asyncAdd'>;
 
 const StyledList = styled(List)`
