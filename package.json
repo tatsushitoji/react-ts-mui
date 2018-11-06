@@ -7,6 +7,7 @@
     "build": "NODE_ENV=production webpack",
     "start": "NODE_ENV=development webpack-dev-server",
     "lint": "tslint 'src/**/*.ts{,x}' -p tsconfig.json",
+    "lint:css": "stylelint './src/**/*.ts{,x}'",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "type": "tsc #",
     "test": "jest",
@@ -16,6 +17,7 @@
     "*.{ts,tsx}": [
       "yarn lint --fix",
       "yarn lint",
+      "yarn lint:css",
       "yarn type",
       "git add"
     ]
@@ -68,6 +70,10 @@
     "lint-staged": "^8.0.0",
     "prettier": "^1.14.3",
     "redux-mock-store": "^1.5.3",
+    "stylelint": "^9.7.1",
+    "stylelint-config-idiomatic-order": "^6.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.0",
     "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
