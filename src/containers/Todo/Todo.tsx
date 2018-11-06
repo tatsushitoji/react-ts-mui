@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { State } from '../../stores/store';
-import { Actions } from '../../stores/actions';
+import { RootState } from '../../stores/store';
+import { RootActions } from '../../stores/actions';
 import { addTodo, toggleTodo, asyncAddTodo } from '../../modules/todo';
 import { TodoComponent, Props } from '../../components/Todo';
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: RootState) => ({
   todos: state.todo.todos,
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<State, undefined, Actions>,
+  dispatch: ThunkDispatch<RootState, undefined, RootActions>,
 ) => ({
   add: (text: string) => dispatch(addTodo(text)),
   asyncAdd: (text: string) => dispatch(asyncAddTodo(text)),

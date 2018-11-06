@@ -1,9 +1,9 @@
 import { ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { State } from '../../stores/store';
-import { Actions as RootActions } from '../../stores/actions';
+import { RootState } from '../../stores/store';
+import { RootActions } from '../../stores/actions';
 
-type ThunkResult<R> = ThunkAction<R, State, undefined, RootActions>;
+type ThunkResult<R> = ThunkAction<R, RootState, undefined, RootActions>;
 
 export const ADD_TODO = 'todo/add_todo';
 export const TOGGLE_TODO = 'todo/toggle_todo';

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { State } from '../../stores/store';
+import { RootState } from '../../stores/store';
 import {
   incrementAmount,
   decrementAmount,
@@ -8,7 +8,7 @@ import {
 } from '../../modules/counter';
 import { Counter as CounterComponent, Props } from '../../components/Counter';
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: RootState) => ({
   count: state.counter.count,
 });
 

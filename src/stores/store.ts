@@ -6,9 +6,9 @@ import { nodeEnv } from '../env';
 import { State as CounterState } from '../modules/counter/reducers';
 import { State as todoState } from '../modules/todo/reducers';
 import { rootEpic } from './epics';
-import { Actions } from './actions';
+import { RootActions } from './actions';
 
-export interface State {
+export interface RootState {
   counter: CounterState;
   todo: todoState;
 }
@@ -23,8 +23,8 @@ const createEnhancer = () => {
       : compose;
   return composeEnhancers(
     applyMiddleware(epicMiddleware, reduxThunk as ThunkMiddleware<
-      State,
-      Actions
+      RootState,
+      RootActions
     >),
   );
 };
