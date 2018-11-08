@@ -43,7 +43,7 @@
     "redux-thunk": "^2.3.0",
     "rxjs": "^6.3.3",
     "source-map-loader": "^0.2.3",
-    "why-did-you-update": "^1.0.0"
+    "why-did-you-update": "0.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
