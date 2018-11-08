@@ -1,8 +1,7 @@
 import * as React from 'react';
+import styled from 'react-emotion';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-// tslint:disable-next-line
-import styled from '../../theme';
 
 export interface Props {
   count: number;

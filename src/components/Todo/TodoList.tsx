@@ -1,11 +1,10 @@
 import * as React from 'react';
+import styled from 'react-emotion';
 import List from '@material-ui/core/List';
 import { Props } from '.';
 import { Todo } from '../../modules/todo';
 import { TodoListItem } from './TodoListItem';
 import { Omit } from '../../types';
-// tslint:disable-next-line
-import styled from '../../theme';
 
 type ListProps = Omit<Props, 'add' | 'asyncAdd'>;
 

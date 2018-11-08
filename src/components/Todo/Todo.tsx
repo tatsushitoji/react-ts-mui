@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { pure } from 'recompose';
 import { withFormik, InjectedFormikProps } from 'formik';
+import styled from 'react-emotion';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-// tslint:disable-next-line
-import styled from '../../theme';
 import { TodoList } from './TodoList';
 
 import { Todo } from '../../modules/todo';
