@@ -13,9 +13,10 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  increment: (_: React.MouseEvent) => dispatch(incrementAmount(3)),
-  decrement: (_: React.MouseEvent) => dispatch(decrementAmount(2)),
-  asyncIncrement: (_: React.MouseEvent) => dispatch(asyncIncrementAmount(5)),
+  increment: (_: React.SyntheticEvent) => dispatch(incrementAmount(3)),
+  decrement: (_: React.SyntheticEvent) => dispatch(decrementAmount(2)),
+  asyncIncrement: (_: React.SyntheticEvent) =>
+    dispatch(asyncIncrementAmount(5)),
 });
 
 export const Counter = connect(
