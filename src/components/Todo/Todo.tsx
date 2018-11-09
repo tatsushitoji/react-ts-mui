@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { pure } from 'recompose';
 import { withFormik, InjectedFormikProps } from 'formik';
-import styled from 'react-emotion';
-import Paper from '@material-ui/core/Paper';
+import { PaperContainer } from '../atoms/PaperContainer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { TodoList } from './TodoList';
@@ -24,11 +23,6 @@ interface FormProps {
 interface FormValues {
   text: Todo['text'];
 }
-
-const TodoPaper = styled(Paper)`
-  padding: 20px;
-  margin: 20px;
-`;
 
 const InnerForm: React.SFC<
   InjectedFormikProps<FormProps, FormValues>
@@ -95,8 +89,8 @@ export const TodoComponent: React.SFC<Props> = ({
   asyncAdd,
   toggle,
 }) => (
-  <TodoPaper>
+  <PaperContainer>
     {todos.length > 0 && <TodoList todos={todos} toggle={toggle} />}
     <TodoForm add={add} asyncAdd={asyncAdd} />
-  </TodoPaper>
+  </PaperContainer>
 );

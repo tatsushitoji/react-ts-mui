@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled from 'react-emotion';
-import Paper from '@material-ui/core/Paper';
+import { PaperContainer } from '../atoms/PaperContainer';
 import Button from '@material-ui/core/Button';
 
 export interface Props {
@@ -10,18 +9,13 @@ export interface Props {
   asyncIncrement: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const CounterPaper = styled(Paper)`
-  padding: 20px;
-  margin: 20px;
-`;
-
 export const Counter: React.SFC<Props> = ({
   count,
   increment,
   decrement,
   asyncIncrement,
 }) => (
-  <CounterPaper data-test="counter">
+  <PaperContainer data-test="counter">
     <div>count: {count}</div>
     <Button
       variant="contained"
@@ -47,5 +41,5 @@ export const Counter: React.SFC<Props> = ({
     >
       Async Increment 5
     </Button>
-  </CounterPaper>
+  </PaperContainer>
 );

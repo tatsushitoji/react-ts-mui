@@ -1,21 +1,28 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import { Props } from '.';
 import { Todo } from '../../modules/todo';
 import { TodoListItem } from './TodoListItem';
-import { Omit } from '../../types';
 
-type ListProps = Omit<Props, 'add' | 'asyncAdd'>;
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      padding: theme.spacing.unit * 4,
+    },
+  });
 
-const StyledList = styled(List)`
-  && {
-    margin: 20px;
-  }
-`;
+interface ListProps extends WithStyles<typeof styles> {
+  todos: Props['todos'];
+  toggle: Props['toggle'];
+}
 
-export const TodoList: React.SFC<ListProps> = ({ todos, toggle }) => (
-  <StyledList>
+const TodoListComponent: React.SFC<ListProps> = ({
+  todos,
+  toggle,
+  classes,
+}) => (
+  <List className={classes.root}>
     {todos.map((item: Todo) => (
       <TodoListItem
         id={item.id}
@@ -25,5 +32,7 @@ export const TodoList: React.SFC<ListProps> = ({ todos, toggle }) => (
         toggle={toggle}
       />
     ))}
-  </StyledList>
+  </List>
 );
+
+export const TodoList = withStyles(styles)(TodoListComponent);
