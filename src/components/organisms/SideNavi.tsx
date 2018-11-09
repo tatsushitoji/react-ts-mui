@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
+// import Tooltip from '@material-ui/core/Tooltip';
 import { WIDTH_DRAWER } from '../theme';
 
 const styles = (theme: Theme) =>
@@ -89,17 +90,27 @@ const SideDrawer: React.SFC<Props> = ({
       </IconButton>
     </div>
     <Divider />
-    <List>
-      {['Counter', 'Todo'].map((text, index) => (
-        <Tooltip title={text} placement="right">
-          <ListItem button={true} key={index}>
-            <ListItemIcon>
-              {text === 'Todo' ? <DoneAllIcon /> : <ExposurePlus1Icon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        </Tooltip>
-      ))}
+    <List component="nav">
+      <ListItem
+        // tslint:disable-next-line
+          component={({ innerRef, ...props }) => <NavLink {...props} to="/" />}
+      >
+        <ListItemIcon>
+          <ExposurePlus1Icon />
+        </ListItemIcon>
+        <ListItemText primary="COUNTER" />
+      </ListItem>
+      <ListItem
+        // tslint:disable-next-line
+          component={({ innerRef, ...props }) => (
+          <NavLink {...props} to="/todo" />
+        )}
+      >
+        <ListItemIcon>
+          <DoneAllIcon />
+        </ListItemIcon>
+        <ListItemText primary="TODO" />
+      </ListItem>
     </List>
   </Drawer>
 );
