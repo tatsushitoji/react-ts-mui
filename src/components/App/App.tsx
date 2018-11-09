@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
 import { compose, withStateHandlers, StateHandlerMap } from 'recompose';
+import 'typeface-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { theme } from '../theme';
