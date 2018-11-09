@@ -54,7 +54,7 @@ const development = {
   devServer: {
     stats: { colors: true },
     port: 3000,
-    // historyApiFallback: true,
+    historyApiFallback: true,
   },
 };
 
