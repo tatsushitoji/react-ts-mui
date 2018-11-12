@@ -3,9 +3,9 @@ import { App } from '../components/App';
 import { Counter } from '../containers/Counter';
 import { Todo } from '../containers/Todo';
 
-export const routeConfig: RouteConfig[] = [
+export const routeConfig = [
   {
-    component: App as any,
+    component: App,
     routes: [
       {
         path: '/',
@@ -17,6 +17,6 @@ export const routeConfig: RouteConfig[] = [
         exact: true,
         component: Todo,
       },
-    ] as any,
+    ],
   },
-];
+] as RouteConfig[];

@@ -17,7 +17,10 @@ const renderApp = () =>
   ReactDOM.render(
     <React.Fragment>
       <Provider store={store}>
-        <BrowserRouter>{renderRoutes(routeConfig)}</BrowserRouter>
+        <BrowserRouter>
+          {/* TODO: avoid type cast */}
+          {renderRoutes(routeConfig)}
+        </BrowserRouter>
       </Provider>
     </React.Fragment>,
     document.body && document.body.appendChild(document.createElement('div')),
