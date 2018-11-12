@@ -5,7 +5,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Todo } from '../../modules/todo';
-import { Props } from '.';
+import { Props } from '../pages/Todo';
 
 interface ListItemProps extends Todo {
   toggle: Props['toggle'];

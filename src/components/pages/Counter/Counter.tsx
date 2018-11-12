@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PaperContainer } from '../atoms/PaperContainer';
+import { PaperContainer } from '../../atoms/PaperContainer';
 import Button from '@material-ui/core/Button';
 
 export interface Props {

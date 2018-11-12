@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
 import List from '@material-ui/core/List';
-import { Props } from '.';
+import { Props } from '../pages/Todo';
 import { Todo } from '../../modules/todo';
-import { TodoListItem } from './TodoListItem';
+import { TodoListItem } from '../molecules/TodoListItem';
 
 const styles = (theme: Theme) =>
   createStyles({

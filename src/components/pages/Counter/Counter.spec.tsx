@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { createShallow } from '@material-ui/core/test-utils';
 import { Counter } from '.';
 
 const sel = (id: string) => {
@@ -9,8 +9,10 @@ const sel = (id: string) => {
 let mockIncrement: any;
 let mockDecrement: any;
 let mockAsyncIncrement: any;
+let shallow: any;
 
 beforeEach(() => {
+  shallow = createShallow();
   mockIncrement = jest.fn();
   mockDecrement = jest.fn();
   mockAsyncIncrement = jest.fn();

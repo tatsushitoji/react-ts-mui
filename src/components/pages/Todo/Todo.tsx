@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { pure } from 'recompose';
 import { withFormik, InjectedFormikProps } from 'formik';
-import { PaperContainer } from '../atoms/PaperContainer';
+import { PaperContainer } from '../../atoms/PaperContainer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { TodoList } from './TodoList';
+import { TodoList } from '../../organisms/TodoList';
 
-import { Todo } from '../../modules/todo';
+import { Todo } from '../../../modules/todo';
 
 export interface Props {
   todos: Todo[];

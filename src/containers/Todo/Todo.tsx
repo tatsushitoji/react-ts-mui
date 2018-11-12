@@ -3,7 +3,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../stores/store';
 import { RootActions } from '../../stores/actions';
 import { addTodo, toggleTodo, asyncAddTodo } from '../../modules/todo';
-import { TodoComponent, Props } from '../../components/Todo';
+import { TodoComponent, Props } from '../../components/pages/Todo';
 
 const mapStateToProps = (state: RootState) => ({
   todos: state.todo.todos,
