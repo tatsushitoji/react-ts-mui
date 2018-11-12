@@ -15,8 +15,8 @@ export const Counter: React.SFC<Props> = ({
   decrement,
   asyncIncrement,
 }) => (
-  <PaperContainer data-test="counter">
-    <div>count: {count}</div>
+  <PaperContainer>
+    <div data-test="counter">count: {count}</div>
     <Button
       variant="contained"
       color="primary"
