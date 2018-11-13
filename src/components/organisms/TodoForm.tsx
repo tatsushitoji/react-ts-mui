@@ -4,13 +4,9 @@ import { withFormik, InjectedFormikProps } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import { ITodo } from '../../modules/todo';
-
-export interface Props {
-  todos: ITodo[];
+interface Props {
   add: (_: string) => void;
   asyncAdd: (_: string) => void;
-  toggle: (_: React.ChangeEvent) => void;
 }
 
 interface FormProps {
