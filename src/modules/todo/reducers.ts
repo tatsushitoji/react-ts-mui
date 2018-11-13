@@ -1,14 +1,14 @@
 import cuid from 'cuid';
 import { ADD_TODO, TOGGLE_TODO, Actions } from '.';
 
-export interface Todo {
+export interface ITodo {
   id: string;
   text: string;
   completed: boolean;
 }
 
 export interface State {
-  todos: Todo[];
+  todos: ITodo[];
 }
 
 const initialState: State = {

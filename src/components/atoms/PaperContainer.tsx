@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
   });
 
 interface Props extends WithStyles<typeof styles> {
-  children?: React.ReactNode;
+  theme?: Theme;
 }
 const PaperComponent: React.SFC<Props> = ({ children, classes, ...props }) => (
   <Paper className={classes.root} {...props}>

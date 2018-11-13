@@ -4,19 +4,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Todo } from '../../modules/todo';
-import { Props } from '../pages/Todo';
 
-interface ListItemProps extends Todo {
-  toggle: Props['toggle'];
+interface Props {
+  id: string;
+  text: string;
+  completed: boolean;
+  toggle: (_: React.ChangeEvent<Element>) => void;
 }
 
-export const Item: React.SFC<ListItemProps> = ({
-  id,
-  text,
-  completed,
-  toggle,
-}) => (
+export const Item: React.SFC<Props> = ({ id, text, completed, toggle }) => (
   <ListItem>
     <ListItemText primary={text} />
     <ListItemSecondaryAction>

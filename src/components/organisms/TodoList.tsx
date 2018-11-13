@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
 import List from '@material-ui/core/List';
-import { Props } from '../pages/Todo';
-import { Todo } from '../../modules/todo';
-import { TodoListItem } from '../molecules/TodoListItem';
+import { ITodo } from '../../modules/todo';
+import { TodoListItem } from '../molecules';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -12,18 +11,14 @@ const styles = (theme: Theme) =>
     },
   });
 
-interface ListProps extends WithStyles<typeof styles> {
-  todos: Props['todos'];
-  toggle: Props['toggle'];
+interface Props extends WithStyles<typeof styles> {
+  todos: ITodo[];
+  toggle: (_: React.ChangeEvent) => void;
 }
 
-const TodoListComponent: React.SFC<ListProps> = ({
-  todos,
-  toggle,
-  classes,
-}) => (
+const TodoListComponent: React.SFC<Props> = ({ todos, toggle, classes }) => (
   <List className={classes.root}>
-    {todos.map((item: Todo) => (
+    {todos.map((item: ITodo) => (
       <TodoListItem
         id={item.id}
         key={item.id}

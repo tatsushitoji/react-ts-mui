@@ -21,7 +21,6 @@ const styles = (theme: Theme) =>
   });
 
 interface Props extends WithStyles<typeof styles> {
-  children?: React.ReactNode;
   sideOpen: boolean;
   setSideOpen: (_: React.SyntheticEvent) => void;
   theme?: Theme;

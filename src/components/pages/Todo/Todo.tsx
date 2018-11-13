@@ -6,13 +6,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { TodoList } from '../../organisms/TodoList';
 
-import { Todo } from '../../../modules/todo';
+import { ITodo } from '../../../modules/todo';
 
 export interface Props {
-  todos: Todo[];
-  add: (id: Todo['text']) => void;
-  asyncAdd: (id: Todo['text']) => void;
-  toggle: (event: React.ChangeEvent) => void;
+  todos: ITodo[];
+  add: (_: string) => void;
+  asyncAdd: (_: string) => void;
+  toggle: (_: React.ChangeEvent) => void;
 }
 
 interface FormProps {
@@ -21,7 +21,7 @@ interface FormProps {
 }
 
 interface FormValues {
-  text: Todo['text'];
+  text: string;
 }
 
 const InnerForm: React.SFC<
