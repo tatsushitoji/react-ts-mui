@@ -11,7 +11,7 @@ import { WIDTH_DRAWER } from '../theme';
 const styles = (theme: Theme) =>
   createStyles({
     appBar: {
-      background: 'linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%)',
+      backgroundColor: '#466168',
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
