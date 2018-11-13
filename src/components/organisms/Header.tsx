@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -62,7 +61,7 @@ const HeaderComponent: React.SFC<Props> = ({
         </IconButton>
       )}
       <Typography variant="h6" color="inherit" noWrap={true}>
-        <Link to={'/'}>Hello My App</Link>
+        Hello My App
       </Typography>
     </Toolbar>
   </AppBar>
