@@ -1,7 +1,26 @@
 import { RouteConfig } from 'react-router-config';
+import loadable from 'loadable-components';
 import { App } from '../components/App';
-import { Counter } from '../containers/Counter';
-import { Todo } from '../containers/Todo';
+
+const LoadableCounter = loadable(
+  () =>
+    import(/* webpackChunkName: "Counter" */ '../containers/Counter').then(
+      ({ Counter }) => Counter,
+    ),
+  {
+    modules: ['../containers/Counter'],
+  },
+);
+
+const LoadableTodo = loadable(
+  () =>
+    import(/* webpackChunkName: "Todo" */ '../containers/Todo').then(
+      ({ Todo }) => Todo,
+    ),
+  {
+    modules: ['../containers/Todo'],
+  },
+);
 
 export const routeConfig = [
   {
@@ -10,12 +29,12 @@ export const routeConfig = [
       {
         path: '/',
         exact: true,
-        component: Counter,
+        component: LoadableCounter,
       },
       {
         path: '/todo',
         exact: true,
-        component: Todo,
+        component: LoadableTodo,
       },
     ],
   },
