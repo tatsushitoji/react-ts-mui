@@ -13,7 +13,8 @@
     "variable-name": false,
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "import-name": false
   }
