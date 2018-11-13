@@ -1,6 +1,9 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const {
   NODE_ENV,
@@ -14,8 +17,8 @@ const base = {
   entry: "./src/index.tsx",
 
   output: {
-    filename: "bundle.js",
-    path: __dirname + "/dist"
+    filename: '[name].[contenthash].bundle.js',
+    chunkFilename: '[name].[contenthash].[id].bundle.js'
   },
 
   resolve: {
@@ -35,13 +38,13 @@ const base = {
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-                outputPath: 'fonts/'
-            }
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
         }]
-    }
+      }
     ]
   },
 
@@ -53,7 +56,7 @@ const base = {
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    })
+    }),
   ],
 
   optimization: {
@@ -62,9 +65,10 @@ const base = {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all'
+          chunks: 'all',
+          enforce: true,
         }
-      }
+      },
     }
   },
 
@@ -73,21 +77,36 @@ const base = {
   },
 };
 
-const development = {
+const development = merge(base, {
   devtool: "cheap-module-eval-source-map",
   devServer: {
     stats: { colors: true },
     port: 3000,
     historyApiFallback: true,
   },
-};
+});
 
-const production = {
-
-};
+const production = merge(base, {
+  plugins: [
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' })
+  ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          sourceMap: true,
+          parallel: true,
+          compress: {
+            collapse_vars: false, // workaround for a minifier's bug: https://github.com/terser-js/terser/issues/120
+            drop_console: true,
+          },
+        },
+      }),
+    ],
+  }
+});
 
 
 module.exports = {
-  ...base,
-  ...(NODE_ENV === 'development' && development),
+  ...(NODE_ENV === 'production' ? production : development),
 };
