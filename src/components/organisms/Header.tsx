@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { pure } from 'recompose';
 import classNames from 'classnames';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
@@ -67,4 +68,4 @@ const HeaderComponent: React.SFC<Props> = ({
   </AppBar>
 );
 
-export const Header = withStyles(styles)(HeaderComponent);
+export const Header = pure(withStyles(styles)(HeaderComponent));
