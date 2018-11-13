@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { PaperContainer } from '../../atoms/PaperContainer';
-import { TodoList } from '../../organisms/TodoList';
-import { TodoForm } from '../../organisms/TodoForm';
+import { TodoList, TodoForm } from '../../organisms';
 import { ITodo } from '../../../modules/todo';
 
 export interface Props {
