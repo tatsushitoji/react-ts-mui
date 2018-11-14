@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { PaperContainer } from '../../atoms/PaperContainer';
-import Button from '@material-ui/core/Button';
+import { PaperContainer } from '../../atoms';
+import { CounterCount } from '../../molecules';
+import { CounterButtons } from '../../organisms';
 
 export interface Props {
   count: number;
@@ -16,30 +17,11 @@ export const Counter: React.SFC<Props> = ({
   asyncIncrement,
 }) => (
   <PaperContainer>
-    <div data-test="counter">count: {count}</div>
-    <Button
-      variant="contained"
-      color="primary"
-      onClick={increment}
-      data-test="increment-button"
-    >
-      Increment 3
-    </Button>
-    <Button
-      variant="contained"
-      color="secondary"
-      onClick={decrement}
-      data-test="decrement-button"
-    >
-      Decrement 2
-    </Button>
-    <Button
-      variant="contained"
-      color="default"
-      onClick={asyncIncrement}
-      data-test="async-increment-button"
-    >
-      Async Increment 5
-    </Button>
+    <CounterCount count={count} />
+    <CounterButtons
+      increment={increment}
+      decrement={decrement}
+      asyncIncrement={asyncIncrement}
+    />
   </PaperContainer>
 );
