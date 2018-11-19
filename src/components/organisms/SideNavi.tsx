@@ -8,6 +8,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import HomeIcon from '@material-ui/icons/Home';
 import ExposurePlus1Icon from '@material-ui/icons/ExposurePlus1';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import Divider from '@material-ui/core/Divider';
@@ -95,6 +96,17 @@ const SideDrawer: React.SFC<Props> = ({
       <ListItem
         // tslint:disable-next-line
           component={({ innerRef, ...props }) => <NavLink {...props} to="/" />}
+      >
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="HOME" />
+      </ListItem>
+      <ListItem
+        // tslint:disable-next-line
+          component={({ innerRef, ...props }) => (
+          <NavLink {...props} to="/counter" />
+        )}
       >
         <ListItemIcon>
           <ExposurePlus1Icon />
