@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
-import { compose, withStateHandlers, StateHandlerMap } from 'recompose';
+import { compose } from 'recompose';
+import {
+  ComponentWithDrawerState,
+  EnhancedProps,
+} from '../hocs/ComponentWithDrawerState';
 import 'typeface-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -11,28 +15,11 @@ interface Props {
   route: RouteConfig;
 }
 
-export interface State {
-  sideOpen: boolean;
-}
+interface OuterProps {}
 
-export interface StateHandlers {
-  setSideOpen: (_: React.SyntheticEvent) => void;
-}
+type InnerProps = EnhancedProps & Props;
 
-export type EnhancedProps = State & StateHandlers & Props;
-
-const enhancer = compose<EnhancedProps, Props>(
-  withStateHandlers<State, StateHandlerMap<State>, Props>(
-    { sideOpen: false },
-    {
-      setSideOpen: ({ sideOpen }) => () => ({
-        sideOpen: !sideOpen,
-      }),
-    },
-  ),
-);
-
-export const AppComponent: React.SFC<EnhancedProps> = ({
+export const AppComponent: React.SFC<InnerProps> = ({
   route,
   sideOpen,
   setSideOpen,
@@ -45,4 +32,6 @@ export const AppComponent: React.SFC<EnhancedProps> = ({
   </MuiThemeProvider>
 );
 
-export const App = enhancer(AppComponent);
+export const App = compose<InnerProps, OuterProps>(
+  ComponentWithDrawerState<InnerProps>(),
+)(AppComponent);
