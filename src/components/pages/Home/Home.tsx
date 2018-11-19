@@ -14,7 +14,7 @@ export const Home: React.SFC = () => (
       <Link to="/counter">Counter</Link>
     </Button>
     <Button variant="contained" color="primary">
-      <Link to="private/todo">Todo</Link>
+      <Link to="/todo">Todo</Link>
     </Button>
   </PaperContainer>
 );

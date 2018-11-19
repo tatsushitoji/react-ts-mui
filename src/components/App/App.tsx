@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { renderRoutes, RouteConfig } from 'react-router-config';
 import { compose } from 'recompose';
 import {
   ComponentWithDrawerState,
@@ -11,23 +10,19 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { theme } from '../theme';
 import { Main } from '../templates/Main';
 
-interface Props {
-  route: RouteConfig;
-}
-
 interface OuterProps {}
 
-type InnerProps = EnhancedProps & Props;
+type InnerProps = EnhancedProps;
 
-export const AppComponent: React.SFC<InnerProps> = ({
-  route,
+const AppComponent: React.SFC<EnhancedProps> = ({
+  children,
   sideOpen,
   setSideOpen,
 }) => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <Main sideOpen={sideOpen} setSideOpen={setSideOpen}>
-      {renderRoutes(route.routes)}
+      {children}
     </Main>
   </MuiThemeProvider>
 );
