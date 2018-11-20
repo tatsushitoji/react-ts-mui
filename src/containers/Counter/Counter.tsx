@@ -1,3 +1,4 @@
+import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RootState } from '../../stores/store';
@@ -6,6 +7,7 @@ import {
   decrementAmount,
   asyncIncrementAmount,
 } from '../../modules/counter';
+import { head } from '../../components/hocs/head';
 import {
   Counter as CounterComponent,
   Props,
@@ -22,7 +24,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch(asyncIncrementAmount(5)),
 });
 
-export const Counter = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)<Props & { store?: unknown }>(CounterComponent);
+export const Counter = compose<Props, { store?: unknown }>(
+  head('Counter'),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+)(CounterComponent);
