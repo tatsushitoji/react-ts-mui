@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { PaperContainer } from '../../atoms';
 
 export const Home: React.SFC = () => (
@@ -10,11 +9,9 @@ export const Home: React.SFC = () => (
       Home
     </Typography>
     <Typography variant="overline">this page is Home</Typography>
-    <Button variant="contained" color="primary">
-      <Link to="/counter">Counter</Link>
-    </Button>
-    <Button variant="contained" color="primary">
+    <Typography variant="body2">
+      This App contains <Link to="/counter">Counter</Link> and{' '}
       <Link to="/todo">Todo</Link>
-    </Button>
+    </Typography>
   </PaperContainer>
 );
