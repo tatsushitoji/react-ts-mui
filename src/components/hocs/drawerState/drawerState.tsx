@@ -11,7 +11,7 @@ export interface StateHandlers {
 
 export type EnhancedProps = State & StateHandlers;
 
-export const ComponentWithDrawerState = <Props extends EnhancedProps>() =>
+export const drawerState = <Props extends EnhancedProps>() =>
   compose<Props, Props>(
     withStateHandlers<State, StateHandlerMap<State>, Props>(
       { sideOpen: false },
