@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { pure } from 'recompose';
 import classNames from 'classnames';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
@@ -128,4 +127,4 @@ const SideDrawer: React.SFC<Props> = ({
   </Drawer>
 );
 
-export const SideNavi = pure(withStyles(styles)(SideDrawer));
+export const SideNavi = withStyles(styles)(SideDrawer);
