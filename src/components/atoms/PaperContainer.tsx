@@ -11,6 +11,9 @@ const styles = (theme: Theme) =>
       '&+&': {
         marginTop: theme.spacing.unit * 4,
       },
+      '&+ a': {
+        marginTop: theme.spacing.unit * 4,
+      },
     },
   });
 
