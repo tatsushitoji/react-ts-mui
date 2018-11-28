@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
-import { Header, SideNavi } from '../organisms';
+import { Header } from '../organisms';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -34,7 +34,6 @@ export const MainComponent: React.SFC<Props> = ({
 }) => (
   <div className={classes.root}>
     <Header isOpen={sideOpen} toggleSideOpen={setSideOpen} />
-    <SideNavi isOpen={sideOpen} toggleSideOpen={setSideOpen} />
     <div className={classes.container}>
       <div className={classes.toolbar} />
       {children}
