@@ -1,6 +1,3 @@
-import { ActionCreator } from 'redux';
-import { TAction } from '../shared';
-
 export const ADD_TODO = 'todo/add_todo';
 export const TOGGLE_TODO = 'todo/toggle_todo';
 
@@ -17,18 +14,6 @@ export const toggleTodo = (id: string) => ({
     id,
   },
 });
-
-export const asyncAddTodo: ActionCreator<TAction<void>> = text => dispatch => {
-  setTimeout(() => {
-    dispatch(addTodo(text));
-  }, 1000);
-};
-
-// export const anotherTodo: ThunkResult<void> = dispatch => {
-//   setTimeout(() => {
-//     dispatch(addTodo('init'));
-//   }, 1000);
-// };
 
 export type Actions =
   | ReturnType<typeof addTodo>
