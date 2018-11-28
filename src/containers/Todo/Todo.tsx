@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../stores';
 import { RootActions } from '../../action';
-import { addTodo, toggleTodo, asyncAddTodo } from '../../modules/todo';
+import {
+  addTodo,
+  toggleTodo,
+  asyncAddTodo,
+  deleteTodo,
+} from '../../modules/todo';
 import { head } from '../../components/hocs/head';
 import { TodoComponent, Props } from '../../components/pages/Todo';
 
@@ -14,9 +19,12 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<RootState, undefined, RootActions>,
 ) => ({
-  add: (text: string) => dispatch(addTodo(text)),
-  asyncAdd: (text: string) => dispatch(asyncAddTodo(text)),
-  toggle: (event: React.ChangeEvent) => dispatch(toggleTodo(event.target.id)),
+  addTodo: (text: string) => dispatch(addTodo(text)),
+  asyncAddTodo: (text: string) => dispatch(asyncAddTodo(text)),
+  toggleTodo: (id: string) => (_: React.SyntheticEvent) =>
+    dispatch(toggleTodo(id)),
+  deleteTodo: (id: string) => (_: React.SyntheticEvent) =>
+    dispatch(deleteTodo(id)),
 });
 
 export const Todo = compose<Props, { store?: unknown }>(

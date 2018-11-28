@@ -13,10 +13,16 @@ const styles = (theme: Theme) =>
 
 interface Props extends WithStyles<typeof styles> {
   todos: ITodo[];
-  toggle: (_: React.ChangeEvent) => void;
+  toggleTodo: (_: string) => (_: React.SyntheticEvent) => void;
+  deleteTodo: (_: string) => (_: React.SyntheticEvent) => void;
 }
 
-const TodoListComponent: React.SFC<Props> = ({ todos, toggle, classes }) => (
+const TodoListComponent: React.SFC<Props> = ({
+  todos,
+  toggleTodo,
+  deleteTodo,
+  classes,
+}) => (
   <List className={classes.root}>
     {todos.map((item: ITodo) => (
       <TodoListItem
@@ -24,7 +30,8 @@ const TodoListComponent: React.SFC<Props> = ({ todos, toggle, classes }) => (
         key={item.id}
         text={item.text}
         completed={item.completed}
-        toggle={toggle}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
       />
     ))}
   </List>

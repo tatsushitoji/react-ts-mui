@@ -5,13 +5,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 interface Props {
-  add: (_: string) => void;
-  asyncAdd: (_: string) => void;
+  addTodo: (_: string) => void;
+  asyncAddTodo: (_: string) => void;
 }
 
 interface FormProps {
-  add: Props['add'];
-  asyncAdd: Props['asyncAdd'];
+  addTodo: Props['addTodo'];
+  asyncAddTodo: Props['asyncAddTodo'];
 }
 
 interface FormValues {
@@ -22,11 +22,11 @@ const InnerForm: React.SFC<
   InjectedFormikProps<FormProps, FormValues>
 > = props => {
   const clickAdd = (_: React.MouseEvent) => {
-    props.add(props.values.text);
+    props.addTodo(props.values.text);
     props.submitForm();
   };
   const clickAsyncAdd = (_: React.MouseEvent) => {
-    props.asyncAdd(props.values.text);
+    props.asyncAddTodo(props.values.text);
     props.submitForm();
   };
   return (
