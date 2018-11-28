@@ -14,13 +14,13 @@ const store = configureStore({});
 
 const renderApp = (RouterComponent: typeof Router) =>
   ReactDOM.render(
-    <React.Fragment>
+    <>
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <RouterComponent />
         </ConnectedRouter>
       </Provider>
-    </React.Fragment>,
+    </>,
     document.body && document.body.appendChild(document.createElement('div')),
   );
 
