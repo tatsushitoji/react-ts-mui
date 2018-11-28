@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render self with initial state 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Counter
+    </title>
+  </HelmetWrapper>
+  <CounterPage
+    asyncIncrement={[MockFunction]}
+    count={0}
+    decrement={[MockFunction]}
+    increment={[MockFunction]}
+  />
+</Fragment>
+`;
