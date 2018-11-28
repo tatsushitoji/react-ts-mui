@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import { ADD_TODO, TOGGLE_TODO, Actions, State } from '.';
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, Actions, State } from '.';
 
 const initialState: State = {
   todos: [],
@@ -31,6 +31,11 @@ export const reducer = (
               ? { ...todo, completed: !todo.completed }
               : todo,
         ),
+      };
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.payload.id),
       };
     default:
       return state;
