@@ -1,8 +1,4 @@
-import { INCREMENT, DECREMENT, Actions } from '.';
-
-export interface State {
-  count: number;
-}
+import { INCREMENT, DECREMENT, Actions, State } from '.';
 
 const initialState: State = {
   count: 0,
