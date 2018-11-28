@@ -1,15 +1,5 @@
 import cuid from 'cuid';
-import { ADD_TODO, TOGGLE_TODO, Actions } from '.';
-
-export interface ITodo {
-  id: string;
-  text: string;
-  completed: boolean;
-}
-
-export interface State {
-  todos: ITodo[];
-}
+import { ADD_TODO, TOGGLE_TODO, Actions, State } from '.';
 
 const initialState: State = {
   todos: [],
