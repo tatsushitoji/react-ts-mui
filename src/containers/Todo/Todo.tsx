@@ -1,8 +1,8 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { RootState } from '../../stores/store';
-import { RootActions } from '../../stores/actions';
+import { RootState } from '../../stores';
+import { RootActions } from '../../action';
 import { addTodo, toggleTodo, asyncAddTodo } from '../../modules/todo';
 import { head } from '../../components/hocs/head';
 import { TodoComponent, Props } from '../../components/pages/Todo';

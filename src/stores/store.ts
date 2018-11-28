@@ -2,19 +2,12 @@ import { createStore, applyMiddleware, compose, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import reduxThunk, { ThunkMiddleware } from 'redux-thunk';
 import { createBrowserHistory } from 'history';
-import { routerMiddleware, RouterState } from 'connected-react-router';
-import { rootReducer } from './reducers';
+import { routerMiddleware } from 'connected-react-router';
+import { rootReducer } from '../reducer';
 import { nodeEnv } from '../env';
-import { State as CounterState } from '../modules/counter/reducers';
-import { State as todoState } from '../modules/todo/reducers';
-import { rootEpic } from './epics';
-import { RootActions } from './actions';
-
-export interface RootState {
-  counter: CounterState;
-  todo: todoState;
-  router: RouterState;
-}
+import { rootEpic } from '../epic';
+import { RootActions } from '../action';
+import { RootState } from '.';
 
 const epicMiddleware = createEpicMiddleware();
 export const history = createBrowserHistory();

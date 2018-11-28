@@ -1,7 +1,7 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { RootState } from '../../stores/store';
+import { RootState } from '../../stores/';
 import {
   incrementAmount,
   decrementAmount,

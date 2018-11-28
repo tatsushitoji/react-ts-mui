@@ -1,5 +1,5 @@
 import { ActionCreator } from 'redux';
-import { TAction } from '../../types';
+import { TAction } from '../shared';
 
 export const ADD_TODO = 'todo/add_todo';
 export const TOGGLE_TODO = 'todo/toggle_todo';
