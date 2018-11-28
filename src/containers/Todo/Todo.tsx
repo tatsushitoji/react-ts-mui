@@ -9,8 +9,7 @@ import {
   asyncAddTodo,
   deleteTodo,
 } from '../../modules/todo';
-import { head } from '../../components/hocs/head';
-import { TodoComponent, Props } from '../../components/pages/Todo';
+import { Todo as TodoComponent, Props } from '../../components/pages/Todo';
 
 const mapStateToProps = (state: RootState) => ({
   todos: state.todo.todos,
@@ -28,7 +27,6 @@ const mapDispatchToProps = (
 });
 
 export const Todo = compose<Props, { store?: unknown }>(
-  head('Todo'),
   connect(
     mapStateToProps,
     mapDispatchToProps,

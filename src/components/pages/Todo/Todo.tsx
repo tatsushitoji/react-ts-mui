@@ -1,23 +1,31 @@
 import * as React from 'react';
+import { compose } from 'recompose';
+import { head } from '../../../components/hocs/head';
 import { PaperContainer } from '../../atoms/PaperContainer';
 import { TodoList, TodoForm } from '../../organisms';
 import { ITodo } from '../../../modules/todo';
 
 export interface Props {
   todos: ITodo[];
-  add: (_: string) => void;
-  asyncAdd: (_: string) => void;
-  toggle: (_: React.ChangeEvent) => void;
+  addTodo: (_: string) => void;
+  asyncAddTodo: (_: string) => void;
+  toggleTodo: (_: string) => (_: React.SyntheticEvent) => void;
+  deleteTodo: (_: string) => (_: React.SyntheticEvent) => void;
 }
 
-export const TodoComponent: React.SFC<Props> = ({
+const TodoPage: React.SFC<Props> = ({
   todos,
-  add,
-  asyncAdd,
-  toggle,
+  addTodo,
+  asyncAddTodo,
+  toggleTodo,
+  deleteTodo,
 }) => (
   <PaperContainer>
-    {todos.length > 0 && <TodoList todos={todos} toggle={toggle} />}
-    <TodoForm add={add} asyncAdd={asyncAdd} />
+    {todos.length > 0 && (
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+    )}
+    <TodoForm addTodo={addTodo} asyncAddTodo={asyncAddTodo} />
   </PaperContainer>
 );
+
+export const Todo = compose<Props, Props>(head('Counter'))(TodoPage);

@@ -7,7 +7,6 @@ import {
   decrementAmount,
   asyncIncrementAmount,
 } from '../../modules/counter';
-import { head } from '../../components/hocs/head';
 import {
   Counter as CounterComponent,
   Props,
@@ -25,7 +24,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 export const Counter = compose<Props, { store?: unknown }>(
-  head('Counter'),
   connect(
     mapStateToProps,
     mapDispatchToProps,

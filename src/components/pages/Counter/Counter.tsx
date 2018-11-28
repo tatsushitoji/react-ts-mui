@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { compose } from 'recompose';
 import { Redirect } from 'react-router-dom';
+import { head } from '../../../components/hocs/head';
 import { PaperContainer } from '../../atoms';
 import { CounterCount } from '../../molecules';
 import { CounterButtons } from '../../organisms';
@@ -11,7 +13,7 @@ export interface Props {
   asyncIncrement: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Counter: React.SFC<Props> = ({
+const CounterPage: React.SFC<Props> = ({
   count,
   increment,
   decrement,
@@ -32,3 +34,5 @@ export const Counter: React.SFC<Props> = ({
     </PaperContainer>
   );
 };
+
+export const Counter = compose<Props, Props>(head('Counter'))(CounterPage);

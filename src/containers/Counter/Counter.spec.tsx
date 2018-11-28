@@ -14,10 +14,10 @@ beforeEach(() => {
     },
   });
   store.dispatch = jest.fn();
-  wrapper = shallow(<Counter store={store}>bar</Counter>);
+  wrapper = shallow(<Counter store={store}>counter</Counter>);
 });
 
-test('should map state and dispatch to props', () => {
+test('should map state to props', () => {
   expect(wrapper.props()).toEqual(
     expect.objectContaining({
       count: 5,
@@ -25,9 +25,8 @@ test('should map state and dispatch to props', () => {
   );
 });
 
-test('should map setUserName to dispatch INCREMENT action', () => {
+test('should map increment to dispatch INCREMENT action', () => {
   wrapper.props().increment();
-
   expect(store.dispatch).toHaveBeenCalledWith({
     type: 'counter/increment',
     payload: {

@@ -12,7 +12,7 @@ beforeEach(() => {
     todo: {
       todos: [
         {
-          id: 1,
+          id: '1',
           text: 'some Todo',
           completed: false,
         },
@@ -20,10 +20,11 @@ beforeEach(() => {
     },
   });
   store.dispatch = jest.fn();
-  wrapper = shallow(<Todo store={store}>bar</Todo>);
+  wrapper = shallow(<Todo store={store}>todo</Todo>);
 });
 
-test('should map state and dispatch to props', () => {
+test('should map state to props', () => {
+  // TODO: avoid specify props key
   expect(wrapper.props().todos[0]).toEqual(
     expect.objectContaining({
       text: 'some Todo',
@@ -31,9 +32,8 @@ test('should map state and dispatch to props', () => {
   );
 });
 
-test('should map setUserName to dispatch INCREMENT action', () => {
-  wrapper.props().add('some Todo');
-
+test('should map addTodo to dispatch ADD_TODO action', () => {
+  wrapper.props().addTodo('some Todo');
   expect(store.dispatch).toHaveBeenCalledWith({
     type: 'todo/add_todo',
     payload: {
