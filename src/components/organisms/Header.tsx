@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { pure } from 'recompose';
-import classNames from 'classnames';
 import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MoreIcon from '@material-ui/icons/MoreVert';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -29,11 +26,7 @@ interface Props extends WithStyles<typeof styles> {
   theme?: Theme;
 }
 
-const HeaderComponent: React.SFC<Props> = ({
-  isOpen,
-  toggleSideOpen,
-  classes,
-}: Props) => (
+const HeaderComponent: React.SFC<Props> = ({ classes }: Props) => (
   <AppBar position="fixed" className={classes.appBar}>
     <Toolbar>
       <Typography
