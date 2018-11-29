@@ -2,7 +2,7 @@ import * as React from 'react';
 import { compose } from 'recompose';
 import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import { head } from '../../../components/hocs/head';
+import { head } from '../../../hocs/head';
 import { PaperComponent, BackLink } from '../../atoms';
 import { CounterCount } from '../../molecules';
 import { CounterButtons } from '../../organisms';
