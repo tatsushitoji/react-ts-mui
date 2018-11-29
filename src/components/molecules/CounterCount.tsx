@@ -1,37 +1,32 @@
 import * as React from 'react';
-import { withStyles, createStyles, Theme, WithStyles } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import styled from '@emotion/styled';
+import { theme } from '../theme';
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      marginBottom: theme.spacing.unit * 2,
-    },
-    pre: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    number: {
-      padding: theme.spacing.unit * 2,
-    },
-  });
+const Wrapper = styled.div`
+  display: flex;
+  margin-bottom: ${theme.spacing.unit * 2}px;
+`;
 
-interface Props extends WithStyles<typeof styles> {
+const OverLine = styled(Typography as React.SFC<TypographyProps>)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CounterNumber = styled(Typography as React.SFC<TypographyProps>)`
+  padding: ${theme.spacing.unit * 2}px;
+`;
+
+interface Props {
   count: number;
-  theme?: Theme;
 }
 
-const Component: React.SFC<Props> = ({ count, classes }) => (
-  <div className={classes.root}>
-    <Typography className={classes.pre} variant="overline">
-      count is ...
-    </Typography>
-    <Typography className={classes.number} component="h3" variant="h1">
+export const CounterCount: React.SFC<Props> = ({ count }) => (
+  <Wrapper>
+    <OverLine variant="overline">count is ...</OverLine>
+    <CounterNumber component="h3" variant="h1">
       {count}
-    </Typography>
-  </div>
+    </CounterNumber>
+  </Wrapper>
 );
-
-export const CounterCount = withStyles(styles)(Component);

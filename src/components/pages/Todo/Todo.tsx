@@ -2,7 +2,7 @@ import * as React from 'react';
 import { compose } from 'recompose';
 import Button from '@material-ui/core/Button';
 import { head } from '../../../components/hocs/head';
-import { PaperContainer, BackLink } from '../../atoms';
+import { PaperComponent, BackLink } from '../../atoms';
 import { TodoList, TodoForm } from '../../organisms';
 import { ITodo } from '../../../modules/todo';
 
@@ -22,7 +22,7 @@ const TodoPage: React.SFC<Props> = ({
   deleteTodo,
 }) => (
   <>
-    <PaperContainer>
+    <PaperComponent>
       {todos.length > 0 && (
         <TodoList
           todos={todos}
@@ -31,7 +31,7 @@ const TodoPage: React.SFC<Props> = ({
         />
       )}
       <TodoForm addTodo={addTodo} asyncAddTodo={asyncAddTodo} />
-    </PaperContainer>
+    </PaperComponent>
     <Button variant="contained" color="default" component={BackLink}>
       Back
     </Button>

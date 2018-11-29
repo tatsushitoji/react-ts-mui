@@ -1,2 +1,2 @@
-export * from './PaperContainer';
+export * from './PaperComponent';
 export * from './BackLink';
