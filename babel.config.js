@@ -1,3 +1,5 @@
+const nodeEnv = process.env["NODE_ENV"];
+
 const presets = [
   "@babel/react",
   "@babel/typescript",
@@ -15,6 +17,10 @@ const plugins = [
   "@babel/plugin-syntax-dynamic-import",
 ];
 
-process.env["NODE_ENV"] === 'production' && plugins.push("react-remove-properties");
+nodeEnv === 'production' && plugins.unshift("emotion", "react-remove-properties");
+nodeEnv === 'development' && plugins.unshift(["emotion", { "sourceMap": true }]);
 
-module.exports = { presets, plugins };
+module.exports = {
+  presets,
+  plugins,
+};
