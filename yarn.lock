@@ -875,9 +875,9 @@
     "@types/react" "*"
     redux "^4.0.0"
 
-"@types/react-router-config@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react-router-config/-/react-router-config-1.0.9.tgz#ffbf90ca30f4ee1617fdf8b8d7ec421958196b1a"
+"@types/react-router-config@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-router-config/-/react-router-config-5.0.0.tgz#901110a781b5ca0e56886d18686196638cde75f0"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
