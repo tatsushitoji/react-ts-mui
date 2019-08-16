@@ -4,7 +4,7 @@ references:
 
   - &docker_container_of_nodejs
     docker:
-      - image: circleci/node:8.16.0
+      - image: circleci/node:8.16.1
         environment:
           NPM_CONFIG_LOGLEVEL: warn
           TERM: xterm-color
